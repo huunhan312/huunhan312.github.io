@@ -1,3 +1,7 @@
 # huunhan312.github.io
 
-This site is for researching Image Classification using AI
+This is for researching about Image Classification.
+
+Digital System Desige Lab - Soongsil University
+
+
