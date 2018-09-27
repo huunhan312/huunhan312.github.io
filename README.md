@@ -1,7 +1,3 @@
 # huunhan312.github.io
 
 This is for researching about Image Classification.
-
-Digital System Desige Lab - Soongsil University
-
-the content will come soon !
