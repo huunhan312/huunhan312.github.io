@@ -111,7 +111,7 @@
 
 <p>In this post I will note a way to use opencv in Visual studio 2015. opencv is an power tool to deal with image, video.</p>
 
-<h2 id="download-opencv-331">Download opencv 3.3.1</h2>
+<h2 id="1-download-opencv-331">1. Download opencv 3.3.1</h2>
 
 <p>OpenCV is an useful, well-known library to programmer/student, who are interested in image processing. It is open, free and very easy to use on both Windows or Linux environment.</p>
 
@@ -119,7 +119,7 @@
 
 <p>This post implement with Visual Studio 2015 and opencv 3.3.1.</p>
 
-<h2 id="create-c-solution-and-project">Create C++ solution and project</h2>
+<h2 id="2-create-c-solution-and-project">2. Create C++ solution and project</h2>
 
 <p>Create an empty c++ project as following figure.</p>
 
@@ -131,12 +131,12 @@
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center"><em>Create an empty project</em></td>
+      <td style="text-align: center">Fig 1: <em>Create an empty project</em></td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="add-opencv-library-into-the-project">Add OpenCV library into the project</h2>
+<h2 id="3-add-opencv-library-into-the-project">3. Add OpenCV library into the project</h2>
 
 <p>There are two methods to add libraries to VS project.</p>
 
@@ -144,13 +144,15 @@
 
 <p>The second method is to put library at some place, then referring your project to that library. The project may be not working if you change library or project location.</p>
 
-<h3 id="method-1-add-opencv-directly-in-vs-project">Method 1: Add OpenCV directly in VS Project</h3>
+<h3 id="31-method-1-add-opencv-directly-in-vs-project">3.1 Method 1: Add OpenCV directly in VS Project</h3>
 
 <p>After extracting OpenCV library to some place, you can copy only several necessary folders below into your VS project.</p>
 
 <p>For example, I copy opencv331 to VS project and keep folders as follows. Note that, depending on your OpenCV version, VS version and platform, it maybe x32 or vc12, blah.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>opencv331
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>test.slm
+test.vcxproj
+opencv331
 |
 +----- include
 |
@@ -161,10 +163,127 @@
                 +----- bin
                 |
                 +----- lib
+
 </code></pre></div></div>
 
-<h3 id="method-2-add-opencv-via-environment-variable-or-direct-path">Method 2: Add OpenCV via environment variable or direct path</h3>
+<p><strong>3.1.1 Adding API path</strong></p>
 
+<p>When coding, we usually use opencv functions and your compiler need to know where they are. They can be call via a API, which only comprise of declarations. In <em>C/C++</em>, the API is files following with extension <em>*.h/*.hpp</em>.</p>
+
+<p>To add OpenCV API, <strong>right click to projects → Properties → click General at C/C++ section</strong>. Then add the path of include folder in OpenCV library to <strong><em>Additional Include Directories</em></strong>.</p>
+
+<p>Notes that the project file (*.vcxproj) is considered as the current directory. If the structure of your project is similar to <em>Fig 1</em>, your path should be: <strong><em>opencv331/include</em></strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><img src="/assets/vs-000-vs2015opencv331/vs-add-include.png" alt="fig2" title="Add include path" /></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Fig 2: <em>Adding API path</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>By include the header file (*.h), your code won’t display the errors as ‘not found’, ‘not declaration’, blah.</p>
+
+<p><strong>3.1.2 Adding library path and specify library files</strong></p>
+
+<p>However, the compiler needs the real definitions from built library during linking process. The programmer should have to provide these information in advanced.</p>
+
+<p>There are two parameters for this steps.</p>
+
+<p>Firstly, we specify the path to library files, where contains *.lib files. In the <strong>Properties dialog → Linker → General</strong>, create a new row and add your path to <strong>Additional Library Directories</strong>.</p>
+
+<p>In this example, the path should be <strong><em>opencv331/x64/vc14/lib</em></strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><img src="/assets/vs-000-vs2015opencv331/vs-add-lib-dir.png" alt="fig3" title="Add lib path" /></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Fig 3: <em>Adding library path</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Secondly, specify the name related files. In the <strong>Properties dialog → Linker → Input</strong>, create row and add the name of library files to <strong>Additional Dependencies</strong>.</p>
+
+<p>For version <strong>3.3.1</strong>, opencv only one library file namely <strong><em>opencv_world_331.lib</em></strong> or <strong><em>opencv_world_331d.lib</em></strong>.</p>
+
+<p>Notes:</p>
+<ul>
+  <li>The suffix <strong>d</strong> means debug. When setting the Visual Studio, we will use the file name without <strong>d</strong> for <strong>Release</strong> mode and with <strong>d</strong> for <strong>Debug</strong> mode.</li>
+  <li>The older versions of opencv has many library files, all of them have the same name style above. Your job in this case is listing all files corresponding to <strong>Release/Debug</strong> mode.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><img src="/assets/vs-000-vs2015opencv331/vs-add-lib.png" alt="fig4" title="Add lib file" /></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Fig 4: <em>Adding library files</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>3.1.3 Adding debugging path</strong></p>
+
+<p>The opencv library built as dynamic link library (dll) should appear in the same output directory, where contains the executive file after build, especially for debug mode.</p>
+
+<p>We can setting this dependency files by specify the path of dll files to visual studio.</p>
+
+<p>In the <strong>Properties dialog → Debugging</strong>, add following syntax to <strong>Environment</strong> option: <strong><em>PATH=opencv331\x64\vc14\bin;%PATH%</em></strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><img src="/assets/vs-000-vs2015opencv331/vs-add-debugging-environment.png" alt="fig5" title="Add debugging environment" /></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Fig 5: <em>Setting the debugging environment</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="32-method-2-add-opencv-via-environment-variable-or-direct-path">3.2 Method 2: Add OpenCV via environment variable or direct path</h3>
+
+<p>If there are lots of projects locate only in your PC, you can store opencv331 at some place and then apply direct path as the <strong>Method 1</strong> above.</p>
+
+<p>Besides, we can use a <em>string variable</em> to store the real library path, then using this variable to declare your real path to Visual Studio.</p>
+
+<p>In Windows, we can define this variable under system variable as follows: <strong>Right click My Commputer or This PC → Properties → Advanced system settings → Advanced → Environment Variables…</strong></p>
+
+<p>In the <strong>System variables</strong>, create new variable as Fig 6. Here, I assume that you extract opencv331 in C:\ drive.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><img src="/assets/vs-000-vs2015opencv331/fig6-system-variable.png" alt="fig6" title="Define new system variable" /></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Fig 6: <em>Define new system variable</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Now, we just need to append the path of further directories/files to $(OPENCV) and add the path to Visual Studio. By doing this, if you change opencv library to onather place, you just need to change the values of environment variable.</p>
+
+<p>For example, the path of dll files: <strong>$(OPENCV)\x64\vc14\bin</strong></p>
+
+<h2 id="4-test">4. Test</h2>
 <p>Lets test an example code to read and display frame from video using OpenCV</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;opencv2/core/core.hpp&gt;
