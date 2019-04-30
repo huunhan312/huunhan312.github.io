@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Popular loss functions | Do programmers have life?</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Popular loss functions" />
+<meta name="author" content="nhannh" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In this post I will note some popular loss function using for training neural network. The last part reviews some loss functions presented in popular papers for object detection." />
+<meta property="og:description" content="In this post I will note some popular loss function using for training neural network. The last part reviews some loss functions presented in popular papers for object detection." />
+<link rel="canonical" href="http://localhost:4000/nn/2018/12/22/lossfunction.html" />
+<meta property="og:url" content="http://localhost:4000/nn/2018/12/22/lossfunction.html" />
+<meta property="og:site_name" content="Do programmers have life?" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-12-22T00:00:00+09:00" />
+<script type="application/ld+json">
+{"dateModified":"2018-12-22T00:00:00+09:00","datePublished":"2018-12-22T00:00:00+09:00","url":"http://localhost:4000/nn/2018/12/22/lossfunction.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/nn/2018/12/22/lossfunction.html"},"headline":"Popular loss functions","author":{"@type":"Person","name":"nhannh"},"description":"In this post I will note some popular loss function using for training neural network. The last part reviews some loss functions presented in popular papers for object detection.","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/jeju2016.PNG"},"name":"nhannh"},"@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+		<div class="header">
+      <header>
+        <!-- <h1><a href="http://localhost:4000/">Do programmers have life?</a></h1> -->
+        
+		<!-- Logo and description -->
+        
+          <img src="/assets/img/jeju2016.PNG" alt="Logo" />
+        
+
+        <p></p>
+		
+		<!-- Github link default -->
+		
+        	
+		
+        
+		
+		<!-- My menu -->	
+		
+		<nav>
+  <!--
+    <a href="/" >Home</a>	
+  
+    <a href="/notes/cmake.html" >Cmake</a>	
+  
+    <a href="/notes/vs.html" >Visual Studio</a>	
+  
+    <a href="/notes/dip.html" >Image processing</a>	
+  
+    <a href="/notes/code.html" >Programming notes</a>	
+  
+    <a href="/notes/nn.html" >Neural Network</a>	
+  
+    <a href="/basic_markdown.html" >Basic Markdown</a>	
+  
+   -->
+  
+        <p class="view"><a href="/" >Home</a></p>
+   
+        <p class="view"><a href="/notes/cmake.html" >Cmake</a></p>
+   
+        <p class="view"><a href="/notes/vs.html" >Visual Studio</a></p>
+   
+        <p class="view"><a href="/notes/dip.html" >Image processing</a></p>
+   
+        <p class="view"><a href="/notes/code.html" >Programming notes</a></p>
+   
+        <p class="view"><a href="/notes/nn.html" >Neural Network</a></p>
+   
+        <p class="view"><a href="/basic_markdown.html" >Basic Markdown</a></p>
+   
+   
+
+</nav>
+		
+		<!--
+		
+        <p class="view"><a href="/">About</a></p>
+        
+		
+		
+        <p class="view"><a href="" >Blog</a></p>
+        
+		-->
+		<!-- Download link -->
+        
+		
+		<!-- Theme info -->
+		<p><small>Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </header>
+	  
+	  
+      <section>	  
+
+		<h1>Popular loss functions</h1>
+<small>22 December 2018</small>
+<hr>
+
+<!--
+<p class="view">by nhannh</p>
+-->
+
+<p>In this post I will note some popular loss function using for training neural network. The last part reviews some loss functions presented in popular papers for object detection.</p>
+
+<h1 id="1-what-is-the-loss-function">1. What is the loss function?</h1>
+
+<p>Loss function (or objective function) decide how well the output of a neural network. Rely on loss function, optimizer does the corresponding way to train the weight factors, or together with other parameters (as learng rate, batch size, weight initialization, data preprocessing, etc) it know somehow to adjust weight factors to get the optimized values to reach the designed target.</p>
+
+<p>When we design a neural network (NN) to classifying, detecting, encoding or decoding, the outputs are expectation of the NN producing after a feed forward step. At the very beginning, the uncomplete trained weights normally generate totally wrong outputs. Under supervised training style, we can calculate the error between these outputs and the ground truth values by a math function, here we name the error as loss value and math function as loss function. Scientists designed many kind of loss function. The reasons are nothing to cope with specific situations. For example, if our output are scalar 0 or 1, we need logistic entropy loss function. OR if our outputs are in a probability relationship with a softmax, we can use softmax-based loss.</p>
+
+<p>Apparently, we need to select the suitable loss function to your expected outputs.</p>
+
+<h1 id="2-basic-loss">2. Basic loss</h1>
+
+<h2 id="21-mean-square-error">2.1 Mean Square error</h2>
+
+<center><img src="/assets/20181222-lossfunc/mse.gif" align="middle" /></center>
+<p><br />
+<a href="https://en.wikipedia.org/wiki/Mean_squared_error">Mean square error</a> compares the outputs to ground truths to account the loss. Why square? Ones may think it is to blow up the error or amplify the difference between the expectation and the truths. The training process needs large error to ‘train’ the model by corresponding large gradients.</p>
+
+<p>However, there is an another meaning behind the exponent. MSE is the second moment which is related closely to variance and the bias of set of predictions. Therefore, if the loss can be reduced, we should have a model predicting the outputs same or closely to the distribution of labels.</p>
+
+<h2 id="22-logistic-entropy-loss">2.2 Logistic entropy loss</h2>
+
+<p>Logistic function</p>
+<center><img src="/assets/20181222-lossfunc/logistic.gif" align="middle" /></center>
+<p><br />
+The logistic function is to answer the Y/N question.</p>
+<ul>
+  <li>1 is Yes</li>
+  <li>0 is No</li>
+</ul>
+
+<p>So, we can use it to classify binary problem as determining whether the input belongs to class A or not.</p>
+
+<center><img src="/assets/20181222-lossfunc/logistic_loss.gif" align="middle" /></center>
+<p><br />
+<a href="http://deeplearning.stanford.edu/tutorial/supervised/LogisticRegression/">Cross-entropy logistic</a> is to calculate the error for binary problem. The trained model should produce large probability in case input in ‘1’ class, and small probability in case input in ‘0’ class. The punishment on answer NO helps the set of coefficients differentiating better the No case.</p>
+
+<h2 id="23-softmax-entropy-loss">2.3 Softmax entropy loss</h2>
+<p>Softmax is usually used to classify a sample to multiple classes, the sample is classified to class with highest probability.</p>
+<center><img src="/assets/20181222-lossfunc/softmax.gif" align="middle" /></center>
+<p><br />
+Softmax function calculate the probability of classes that a sample could be classified. The normalize denominator is sum of all predictions. So, sum of all probabilities is equal to ‘1’. Normally, the highest score decides the class of sample.</p>
+
+<center><img src="/assets/20181222-lossfunc/softmax_loss.gif" align="middle" /></center>
+<p><br />
+<a href="http://ufldl.stanford.edu/tutorial/supervised/SoftmaxRegression/">Cross-entropy softmax</a> is a popular formula to calculate error for training with softmax function. As logistic entropy loss, the entropy styles increase the loss at truth position and reudces at not-truth positons.</p>
+
+<h2 id="24-l1-smooth-loss">2.4 L1 smooth loss</h2>
+
+<center><img src="/assets/20181222-lossfunc/l1smooth.gif" align="middle" /></center>
+<p><br />
+L1 smooth loss is a special case of huber loss <a href="https://en.wikipedia.org/wiki/Huber_loss">Huber loss</a>. When |x| is greater than 1, the gradient is stably equal to ‘1’. Inversely, it is smaller depending value of |x| when |x| is less than ‘1’. It means when the input is small, the loss will be reduced more slowly.</p>
+
+<h2 id="25-others">2.5 Others</h2>
+<p><a href="https://en.wikipedia.org/wiki/Hinge_loss">Hinge loss</a> is popular for maximum margin problem, applied common in SVMs.</p>
+
+<h1 id="3-loss-function-review">3. Loss function review</h1>
+
+<p>Following review three popular CNN-based detectors. A detector does two tasks simultaneously (localization and classification) in forward step. For example, it can identify a bounding box of objects and call exactly name for each object.</p>
+
+<p>Normally, a detector constructs from a base net (say, a CNN-based feature extraction) and a regression part (box regressor and classifier). The base net inherits from welknown, trained net as VGG, ResNet, DenseNet, Inception, etc. They are classifiers and are trained with very complex dataset as ImageNet-1000 and excluding the output layer. The output of base net is a layer of feature maps. The second part uses these features to locate object position, its size by a rectangular shape (regressor), and a corresponding class prediction (classifier).</p>
+
+<p>To train that such CNN architectures, the loss functions are usually a combination of regressor and classifier. Below papers follow this scheme and the final loss is sum of weight losses.</p>
+
+<p>3.1 Paper: Faster RCNN</p>
+
+<center><img src="/assets/20181222-lossfunc/fastrcnn.gif" align="middle" /></center>
+<p><br /></p>
+
+<p>3.2 Paper: SSD</p>
+
+<center><img src="/assets/20181222-lossfunc/ssd.gif" align="middle" /></center>
+<p><br /></p>
+
+<p>3.3. Paper: YOLOv1</p>
+
+<center><img src="/assets/20181222-lossfunc/yolov1.gif" align="middle" /></center>
+<p><br /></p>
+
+
+
+<!--
+
+  <small>tags: <em>nn</em></small>
+
+-->
+<hr>
+<p>This blog stores notes as personal purpose. Please leave issue in my github if you want to have further discussion.</p>
+
+      </section>
+	  
+	  <sidebar>
+	     <!-- 
+
+  <!-- <h3>vs</h3> 
+  <ul>
+    
+      <li><a href="/vs/2018/12/07/VS2015-openCV.html" >Visual Studio 2015 and opencv 3.3.1</a></li>
+    
+  </ul>
+
+  <!-- <h3>nn</h3> 
+  <ul>
+    
+      <li><a href="/nn/2018/12/22/lossfunction.html" class="current">Popular loss functions</a></li>
+    
+  </ul>
+
+-->
+<!--
+
+	<hr>
+    
+      <li><a href="/vs/2018/12/07/VS2015-openCV.html" >Visual Studio 2015 and opencv 3.3.1</a></li>
+    
+
+	<hr>
+    
+      <li><a href="/nn/2018/12/22/lossfunction.html" class="current">Popular loss functions</a></li>
+    
+
+<hr>
+-->
+<i>Recent posts</i>
+<br />
+
+   <a href="/nn/2018/12/22/lossfunction.html" class="current">Popular loss functions</a><br />
+
+   <a href="/vs/2018/12/07/VS2015-openCV.html" >Visual Studio 2015 and opencv 3.3.1</a><br />
+
+
+	  </sidebar>
+	  
+      <footer>
+        
+       
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+    
+  </body>
+</html>

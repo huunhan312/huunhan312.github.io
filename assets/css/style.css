@@ -266,8 +266,7 @@ a {
   text-decoration: none; }
 
 a:hover, a:focus {
-  color: #069;
-  font-weight: bold; }
+  color: #00283D; }
 
 a small {
   font-size: 11px;
@@ -276,7 +275,7 @@ a small {
   display: block; }
 
 a:hover small {
-  color: #777; }
+  color: #00283D; }
 
 .wrapper {
   width: 1024px;
@@ -358,8 +357,7 @@ ul.downloads {
   height: 34px; }
 
 .downloads a:hover, .downloads a:focus {
-  color: #675C5C;
-  font-weight: bold; }
+  color: #00283D; }
 
 .downloads ul a:active {
   background-color: #f0f0f0; }

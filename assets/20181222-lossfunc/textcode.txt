@@ -1,0 +1,25 @@
+
+faster rcnn 
+
+Loss({p_i},{t_i}) = 
+\frac{1}{N_{cls}}\sum_i{L_{cls}(p_i, p_i^*)} +
+\lambda\frac{1}{N_{reg}}\sum_i{p_i^*L_{reg}(t_i,t_i^*)}
+
+SSD
+
+Loss(x,c,l,g) = 
+\frac{1}{N}
+\left ( 
+L_{conf}(x,c)+\alpha L_{loc}(x,l,g)
+ \right )
+ 
+ 
+
+YOLO v1
+
+Loss = \\
+\lambda_{coord}\sum_{i=0}^{S^2}\sum_{j=0}^{B}\mathbb{P}_{ij}^{obj}\left[(x_i-\widehat{x}_i)^2 + (y_i-\widehat{y}_i)^2\right] \\
++ \lambda_{coord}\sum_{i=0}^{S^2}\sum_{j=0}^{B}\mathbb{P}_{ij}^{obj}\left[(\sqrt{w_i}-\sqrt{\widehat{w}_i})^2  (\sqrt{h_i}-\sqrt{\widehat{h}_i})^2\right] \\
++ \sum_{i=0}^{S^2}\sum_{j=0}^{B}\mathbb{P}_{ij}^{obj}\left(C_i-\widehat{C}_i\right)^2 \\
++ \lambda_{noobj}\sum_{i=0}^{S^2}\sum_{j=0}^{B}\mathbb{P}_{ij}^{noobj}\left(C_i-\widehat{C}_i\right)^2 \\
++ \sum_{i=0}^{S^2}\mathbb{P}_{i}^{obj}\sum_{c\in Class}(p_i(c)-\widehat{p}_i(c))^2
