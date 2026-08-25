@@ -1,0 +1,41 @@
+<!doctype html>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.CMS) {
+      window.CMS.registerEditorComponent({
+        id: "center_block",
+        label: "Center Text Block",
+        fields: [
+          { name: "content", label: "Text to Center", widget: "string" }
+        ],
+        // Match the angle bracket syntax
+        pattern: /^{{<\s*center\s*>}}([\s\S]*?){{<\s*\/center\s*>}}/,
+        
+        fromBlock: function(match) {
+          return { content: match && match[1] ? match[1].trim() : '' };
+        },
+        
+        toBlock: function(obj) {
+          // Change to angle brackets here
+          return `{{< center >}}${obj.content || ''}{{< /center >}}`;
+        },
+        
+        toPreview: function(obj) {
+          return `<div style="text-align: center; border: 1px dashed #999; padding: 10px;">↕ Centered: ${obj.content || ''}</div>`;
+        }
+      });
+    }
+  });
+</script>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Content Manager</title>
+</head>
+<body>
+  <!-- Swap for /admin/dist/decap-cms.js after running: docker compose run --rm hugo vendor-admin -->
+  <script src="https://unpkg.com/decap-cms@^3.15.1/dist/decap-cms.js"></script>
+</body>
+</html>

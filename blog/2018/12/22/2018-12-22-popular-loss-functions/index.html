@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Popular loss functions</title>
+<meta name="author" content="DevCows" />
+
+
+<link rel="canonical" href="https://huunhan312.github.io/blog/2018/12/22/2018-12-22-popular-loss-functions/" />
+
+
+
+
+
+<meta name="keywords" content="devcows, hugo, go, cv, nn">
+
+
+<meta name="description" content="Site template made by Devcows using Hugo">
+
+<meta name="generator" content="Hugo 0.164.0">
+
+
+<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v6.7.2/css/all.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+
+<link href="/css/animate.css" rel="stylesheet">
+
+
+
+  <link href="/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+
+
+
+<link href="/css/custom.css?1787673215" rel="stylesheet">
+
+
+
+  <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+
+<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+
+<link href="/css/owl.carousel.css" rel="stylesheet">
+<link href="/css/owl.theme.css" rel="stylesheet">
+
+
+<link rel="alternate" href="https://huunhan312.github.io/index.xml" type="application/rss+xml" title="NhanNG-Weblog">
+
+
+
+
+
+
+
+
+<meta property="og:locale" content="en_us">
+<meta property="og:site_name" content="NhanNG-Weblog">
+<meta property="og:title" content="Popular loss functions">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://huunhan312.github.io/blog/2018/12/22/2018-12-22-popular-loss-functions/" />
+<meta property="og:description" content="Site template made by Devcows using Hugo">
+<meta property="og:image" content="https://huunhan312.github.io/img/banners/nn1.png">
+<meta property="og:image:type" content="image/png">
+
+
+  
+  
+    <meta property="og:image:width" content="400">
+    <meta property="og:image:height" content="300">
+  
+  
+
+<meta property="og:updated_time" content="2018-12-22T22:00:00&#43;0900">
+
+  
+  
+  <meta property="article:section" content="computer vision">
+  <meta property="article:tag" content="cv">
+  <meta property="article:tag" content="nn">
+  
+  
+  <meta property="article:published_time" content="2018-12-22T22:00:00&#43;0900">
+  <meta property="article:modified_time" content="2018-12-22T22:00:00&#43;0900">
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@GoHugoIO">
+<meta name="twitter:title" content="Popular loss functions">
+
+<meta name="twitter:image" content="https://huunhan312.github.io/img/banners/nn1.png">
+
+<meta name="twitter:description" content="Site template made by Devcows using Hugo">
+
+
+    
+  </head>
+
+  <body>
+
+    <div id="all">
+
+        
+<header>
+  <div id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-5">
+           
+        </div>
+        <div class="col-xs-7">
+          <div class="social">
+            
+            <a href="https://github.com/huunhan312" target="_blank" style="opacity: 1;"><i class='fab fa-2x fa-github'></i></a>
+            
+            <a href="tel:&#43;8210-2909-1989" target="_blank" style="opacity: 1;"><i class='fas fa-2x fa-phone'></i></a>
+            
+            <a href="kakaotalkId:huunhan312" target="_blank" style="opacity: 1;"><img src='/img/KakaoTalk_logo.svg' style='width:2em; height:2em; vertical-align:text-bottom; filter: grayscale(100%) opacity(60%);' alt='Kakao'></a>
+            
+            <a href="mailto:uit.nhan@gmail.com" target="_blank" style="opacity: 1;"><i class='fas fa-2x fa-envelope'></i></a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+        <header class="navbar-affixed-top" data-spy="affix" data-offset-top="62">
+    <div class="navbar navbar-default yamm " role="navigation" id="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    
+                      <img src="/img/logo.png" alt="Popular loss functions logo" class="hidden-xs hidden-sm" />
+                      <img src="/img/logo-small.png" alt="Popular loss functions logo" class="visible-xs visible-sm" />
+                    
+                    <span class="sr-only">Popular loss functions - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+
+                  
+                  
+                  
+
+                  
+
+                  
+                    
+                  
+
+                  
+
+                  
+                  <li class="dropdown active">
+                    <a href="/blog/">Blog</a>
+                  </li>
+                  
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fas fa-search"></i></button>
+                </span>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</header>
+
+
+
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Popular loss functions</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        
+                          <p class="text-muted text-uppercase mb-small text-right">
+                            
+			      By <a href="/authors/nhan">Nhan</a>
+                            
+                            
+                            
+                              
+                              
+                                  
+                              
+                                  
+                              
+                                  
+                              
+                                  
+                              
+                                  
+                              
+                                  
+                              
+                                  
+                              
+                                  
+                              
+                                  
+                              
+                                  
+                              
+                                  
+                              
+                                  
+                              
+                              December 22, 2018
+                            
+                          </p>
+                        
+
+                        <div id="post-content">
+                          <p>In this post I will note some popular loss function using for training neural network. The last part reviews some loss functions presented in popular papers for object detection.</p>
+<h2 id="1-what-is-the-loss-function">1. What is the loss function?</h2>
+<p>Loss function (or objective function) decide how well the output of a neural network. Rely on loss function, optimizer does the corresponding way to train the weight factors, or together with other parameters (as learng rate, batch size, weight initialization, data preprocessing, etc) it know somehow to adjust weight factors to get the optimized values to reach the designed target.</p>
+<p>When we design a neural network (NN) to classifying, detecting, encoding or decoding, the outputs are expectation of the NN producing after a feed forward step. At the very beginning, the uncomplete trained weights normally generate totally wrong outputs. Under supervised training style, we can calculate the error between these outputs and the ground truth values by a math function, here we name the error as loss value and math function as loss function. Scientists designed many kind of loss function. The reasons are nothing to cope with specific situations. For example, if our output are scalar 0 or 1, we need logistic entropy loss function. OR if our outputs are in a probability relationship with a softmax, we can use softmax-based loss.</p>
+<p>Apparently, we need to select the suitable loss function to your expected outputs.</p>
+<h2 id="2-basic-loss">2. Basic loss</h2>
+<h3 id="21-mean-square-error">2.1 Mean Square error</h3>
+<p><img src="mse.gif" alt=""></p>
+<p><a href="https://en.wikipedia.org/wiki/Mean_squared_error">Mean square error</a> compares the outputs to ground truths to account the loss. Why square? Ones may think it is to blow up the error or amplify the difference between the expectation and the truths. The training process needs large error to ‘train’ the model by corresponding large gradients.</p>
+<p>However, there is an another meaning behind the exponent. MSE is the second moment which is related closely to variance and the bias of set of predictions. Therefore, if the loss can be reduced, we should have a model predicting the outputs same or closely to the distribution of labels.</p>
+<h3 id="22-logistic-entropy-loss">2.2 Logistic entropy loss</h3>
+<p>Logistic function</p>
+<p><img src="logistic.gif" alt=""></p>
+<p>The logistic function is to answer the Y/N question.</p>
+<ul>
+<li>1 is Yes</li>
+<li>0 is No</li>
+</ul>
+<p>So, we can use it to classify binary problem as determining whether the input belongs to class A or not.</p>
+<p><img src="logistic_loss.gif" alt=""></p>
+<p><a href="http://deeplearning.stanford.edu/tutorial/supervised/LogisticRegression/">Cross-entropy logistic</a> is to calculate the error for binary problem. The trained model should produce large probability in case input in ‘1’ class, and small probability in case input in ‘0’ class. The punishment on answer NO helps the set of coefficients differentiating better the No case.</p>
+<h3 id="23-softmax-entropy-loss">2.3 Softmax entropy loss</h3>
+<p>Softmax is usually used to classify a sample to multiple classes, the sample is classified to class with highest probability.</p>
+<p><img src="softmax.gif" alt=""></p>
+<p>Softmax function calculate the probability of classes that a sample could be classified. The normalize denominator is sum of all predictions. So, sum of all probabilities is equal to ‘1’. Normally, the highest score decides the class of sample.</p>
+<p><img src="softmax_loss.gif" alt=""></p>
+<p><a href="http://ufldl.stanford.edu/tutorial/supervised/SoftmaxRegression/">Cross-entropy softmax</a> is a popular formula to calculate error for training with softmax function. As logistic entropy loss, the entropy styles increase the loss at truth position and reudces at not-truth positons.</p>
+<h3 id="24-l1-smooth-loss">2.4 L1 smooth loss</h3>
+<p><img src="l1smooth.gif" alt=""></p>
+<p>L1 smooth loss is a special case of huber loss <a href="https://en.wikipedia.org/wiki/Huber_loss">Huber loss</a>. When |x| is greater than 1, the gradient is stably equal to ‘1’. Inversely, it is smaller depending value of |x| when |x| is less than ‘1’. It means when the input is small, the loss will be reduced more slowly.</p>
+<h3 id="25-others">2.5 Others</h3>
+<p><a href="https://en.wikipedia.org/wiki/Hinge_loss">Hinge loss</a> is popular for maximum margin problem, applied common in SVMs.</p>
+<h2 id="3-loss-function-review">3. Loss function review</h2>
+<p>Following review three popular CNN-based detectors. A detector does two tasks simultaneously (localization and classification) in forward step. For example, it can identify a bounding box of objects and call exactly name for each object.</p>
+<p>Normally, a detector constructs from a base net (say, a CNN-based feature extraction) and a regression part (box regressor and classifier). The base net inherits from welknown, trained net as VGG, ResNet, DenseNet, Inception, etc. They are classifiers and are trained with very complex dataset as ImageNet-1000 and excluding the output layer. The output of base net is a layer of feature maps. The second part uses these features to locate object position, its size by a rectangular shape (regressor), and a corresponding class prediction (classifier).</p>
+<p>To train that such CNN architectures, the loss functions are usually a combination of regressor and classifier. Below papers follow this scheme and the final loss is sum of weight losses.</p>
+<h3 id="31-paper-faster-rcnn">3.1 Paper: Faster RCNN</h3>
+<p><img src="fastrcnn.gif" alt=""></p>
+<h3 id="32-paper-ssd">3.2 Paper: SSD</h3>
+<p><img src="ssd.gif" alt=""></p>
+<h3 id="33-paper-yolov1">3.3. Paper: YOLOv1</h3>
+<p><img src="yolov1.gif" alt=""></p>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devcows" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" class="form-control" placeholder="Search" />
+                <input type="hidden" name="sitesearch" value="https://huunhan312.github.io/" />
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fas fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            
+            <li >
+                <a href="/categories/computer-vision">COMPUTER VISION (1)</a>
+            </li>
+            
+            <li >
+                <a href="/categories/experiments">EXPERIMENTS (1)</a>
+            </li>
+            
+        </ul>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            
+            <li >
+                <a href="/tags/cv"><i class="fas fa-tags"></i> cv</a>
+            </li>
+            
+            <li >
+                <a href="/tags/nn"><i class="fas fa-tags"></i> nn</a>
+            </li>
+            
+            <li >
+                <a href="/tags/opencv"><i class="fas fa-tags"></i> opencv</a>
+            </li>
+            
+            <li >
+                <a href="/tags/vs"><i class="fas fa-tags"></i> vs</a>
+            </li>
+            
+        </ul>
+    </div>
+
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2026 - 2036, Personal Site; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="https://bootstrapious.com/universal-business-e-commerce-template">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+
+<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAv7Sza8NSp9_l_g8G2vlo0H4ydEPn_2jY&v=3.exp"></script>
+<script src="/js/hpneo.gmaps.js"></script>
+<script src="/js/gmaps.init.js"></script>
+
+
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

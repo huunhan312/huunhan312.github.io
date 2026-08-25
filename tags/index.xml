@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Tags on NhanNG-Weblog</title>
+		<link>https://huunhan312.github.io/tags/</link>
+		<description>Recent content in Tags on NhanNG-Weblog</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 22 Dec 2018 22:00:00 +0900</lastBuildDate>
+		
+			<atom:link href="https://huunhan312.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Cv</title>
+				<link>https://huunhan312.github.io/tags/cv/</link>
+				<pubDate>Sat, 22 Dec 2018 22:00:00 +0900</pubDate>
+				<guid>https://huunhan312.github.io/tags/cv/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Nn</title>
+				<link>https://huunhan312.github.io/tags/nn/</link>
+				<pubDate>Sat, 22 Dec 2018 22:00:00 +0900</pubDate>
+				<guid>https://huunhan312.github.io/tags/nn/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Opencv</title>
+				<link>https://huunhan312.github.io/tags/opencv/</link>
+				<pubDate>Fri, 07 Dec 2018 22:00:00 +0900</pubDate>
+				<guid>https://huunhan312.github.io/tags/opencv/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Vs</title>
+				<link>https://huunhan312.github.io/tags/vs/</link>
+				<pubDate>Fri, 07 Dec 2018 22:00:00 +0900</pubDate>
+				<guid>https://huunhan312.github.io/tags/vs/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

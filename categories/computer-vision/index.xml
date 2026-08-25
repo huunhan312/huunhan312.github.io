@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Computer Vision on NhanNG-Weblog</title>
+		<link>https://huunhan312.github.io/categories/computer-vision/</link>
+		<description>Recent content in Computer Vision on NhanNG-Weblog</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 22 Dec 2018 22:00:00 +0900</lastBuildDate>
+		
+			<atom:link href="https://huunhan312.github.io/categories/computer-vision/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Popular loss functions</title>
+				<link>https://huunhan312.github.io/blog/2018/12/22/2018-12-22-popular-loss-functions/</link>
+				<pubDate>Sat, 22 Dec 2018 22:00:00 +0900</pubDate>
+				<guid>https://huunhan312.github.io/blog/2018/12/22/2018-12-22-popular-loss-functions/</guid>
+				<description>&lt;p&gt;In this post I will note some popular loss function using for training neural network. The last part reviews some loss functions presented in popular papers for object detection.&lt;/p&gt;&#xA;&lt;h2 id=&#34;1-what-is-the-loss-function&#34;&gt;1. What is the loss function?&lt;/h2&gt;&#xA;&lt;p&gt;Loss function (or objective function) decide how well the output of a neural network. Rely on loss function, optimizer does the corresponding way to train the weight factors, or together with other parameters (as learng rate, batch size, weight initialization, data preprocessing, etc) it know somehow to adjust weight factors to get the optimized values to reach the designed target.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

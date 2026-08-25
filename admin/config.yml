@@ -1,0 +1,150 @@
+local_backend: true
+
+backend:
+  name: git-gateway
+  branch: main
+
+# --- GLOBAL MEDIA PATHS ---
+media_folder: "static/img"
+public_folder: "/img"
+
+collections:
+  # ==========================================
+  # 1. BLOG POSTS (Markdown + TOML Frontmatter)
+  # ==========================================
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    delete: true
+    
+    path: "{{year}}-{{month}}-{{day}}-{{slug}}/index"
+    summary: "{{date | format('YYYY-MM-DD')}} : {{title}}"
+    
+    media_folder: ""
+    public_folder: ""
+
+    format: "toml-frontmatter"
+    extension: "md"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Authors", name: "authors", widget: "list", summary: "{{fields.author}}", field: { label: "Author Name", name: "author", widget: "string" }}
+      - { label: "Banner Image", name: "banner", widget: "image", required: false, media_folder: "/static/img/banners", public_folder: "/img/banners" }
+      - { label: "Categories", name: "categories", widget: "list", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ==========================================
+  # 2. HOMEPAGE SLIDER/CAROUSEL (Pure YAML Data)
+  # ==========================================
+  - name: "carousel"
+    label: "Homepage Slider"
+    folder: "data/carousel"
+    create: true
+    delete: true
+    extension: "yaml"
+    format: "yaml"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title / Main Heading", name: "title", widget: "string" }
+      - { label: "Subheading / Description", name: "description", widget: "text", required: false }
+      - { label: "Slide Image", name: "image", widget: "image", media_folder: "/static/img/carousel", public_folder: "/img/carousel" }
+      - { label: "Button Link URL", name: "href", widget: "string", required: false }
+      - { label: "Weight (Order number)", name: "weight", widget: "number", value_type: "int", default: 10 }
+
+  # ==========================================
+  # 3. CLIENT TESTIMONIALS (Pure YAML Data)
+  # ==========================================
+  - name: "testimonials"
+    label: "Client Testimonials"
+    folder: "data/testimonials"
+    create: true
+    delete: true
+    extension: "yaml"
+    format: "yaml"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Client Name", name: "name", widget: "string" }
+      - { label: "Job Title / Company", name: "title", widget: "string", required: false }
+      - { label: "Client Avatar / Photo", name: "avatar", widget: "image", media_folder: "/static/img/testimonials", public_folder: "/img/testimonials", required: false }
+      - { label: "Testimonial Quote Text", name: "text", widget: "text" }
+
+  # ==========================================
+  # 4. HOMEPAGE FEATURES GRID (Pure YAML Data)
+  # ==========================================
+  - name: "features"
+    label: "Homepage Features"
+    folder: "data/features"
+    create: true
+    delete: true
+    extension: "yaml"
+    format: "yaml"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Feature Name", name: "name", widget: "string" }
+      - { label: "Icon Font Class", name: "icon", widget: "string", description: "Example: fa fa-desktop, fa fa-lightbulb-o" }
+      - { label: "Description Text", name: "description", widget: "text" }
+      - { label: "Weight (Order number)", name: "weight", widget: "number", value_type: "int", default: 10 }
+
+  # ==========================================
+  # NEW!! 5. CLIENT LOGOS / PARTNERS (Pure YAML Data)
+  # ==========================================
+  - name: "clients"
+    label: "Our Clients & Partners"
+    folder: "data/clients"
+    create: true
+    delete: true
+    extension: "yaml"
+    format: "yaml"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Company/Client Name", name: "name", widget: "string" }
+      - { label: "Partner Website URL", name: "url", widget: "string", required: false }
+      - { label: "Company Logo", name: "image", widget: "image", media_folder: "/static/img/clients", public_folder: "/img/clients" }
+  # ==========================================
+  # NEW!! 5. CLIENT LOGOS / PARTNERS (Pure YAML Data)
+  # ==========================================
+  - name: "settings"
+    label: "Global Settings"
+    delete: false # Prevents accidentally deleting configuration matrices
+    files:
+      - name: "menu"
+        label: "Main Navigation Menu"
+        file: "hugo.toml" # Point directly to your global configuration file
+        format: "toml"
+        fields:
+          - label: "Top Navigation Links"
+            name: "menu"
+            widget: "object"
+            fields:
+              - label: "Main Menu Items"
+                name: "main"
+                widget: "list"
+                fields:
+                  - { label: "Link Display Name", name: "name", widget: "string" }
+                  - { label: "Target URL Path", name: "url", widget: "string" }
+                  - { label: "Ordering Weight", name: "weight", widget: "number", value_type: "int", default: 10 }
+                  # ==========================================
+                  # FIELDS TO CONNECT PARENTS & CHILDREN:
+                  # ==========================================
+                  - label: "Unique Identifier"
+                    name: "identifier"
+                    widget: "string"
+                    required: false
+                    hint: "Only fill this out if this item will have dropdown children (e.g., 'features-menu')."
+                    
+                  - label: "Parent Identifier"
+                    name: "parent"
+                    widget: "string"
+                    required: false
+                    hint: "If this is a dropdown child, type the exact 'Unique Identifier' of its parent here."
+                  # ==========================================
+                  # FIELD FOR THE UNIVERSAL THEME "POST" KEY:
+                  # ==========================================
+                  - label: "Theme Post Index"
+                    name: "post"
+                    widget: "number"
+                    value_type: "int"
+                    required: false
+                    hint: "If the template example used a 'post = 1' or 'post = 2' key for this item, match that number here."

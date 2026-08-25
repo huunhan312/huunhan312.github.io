@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Nhan on NhanNG-Weblog</title>
+		<link>https://huunhan312.github.io/authors/nhan/</link>
+		<description>Recent content in Nhan on NhanNG-Weblog</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 22 Dec 2018 22:00:00 +0900</lastBuildDate>
+		
+			<atom:link href="https://huunhan312.github.io/authors/nhan/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Popular loss functions</title>
+				<link>https://huunhan312.github.io/blog/2018/12/22/2018-12-22-popular-loss-functions/</link>
+				<pubDate>Sat, 22 Dec 2018 22:00:00 +0900</pubDate>
+				<guid>https://huunhan312.github.io/blog/2018/12/22/2018-12-22-popular-loss-functions/</guid>
+				<description>&lt;p&gt;In this post I will note some popular loss function using for training neural network. The last part reviews some loss functions presented in popular papers for object detection.&lt;/p&gt;&#xA;&lt;h2 id=&#34;1-what-is-the-loss-function&#34;&gt;1. What is the loss function?&lt;/h2&gt;&#xA;&lt;p&gt;Loss function (or objective function) decide how well the output of a neural network. Rely on loss function, optimizer does the corresponding way to train the weight factors, or together with other parameters (as learng rate, batch size, weight initialization, data preprocessing, etc) it know somehow to adjust weight factors to get the optimized values to reach the designed target.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Visual Studio 2015 and opencv 3.3.1</title>
+				<link>https://huunhan312.github.io/blog/2018/12/07/2018-12-07-visual-studio-2015-and-opencv-3-3-1/</link>
+				<pubDate>Fri, 07 Dec 2018 22:00:00 +0900</pubDate>
+				<guid>https://huunhan312.github.io/blog/2018/12/07/2018-12-07-visual-studio-2015-and-opencv-3-3-1/</guid>
+				<description>&lt;p&gt;&lt;em&gt;[this blog was written right after moving coding from python to c++ with VS]&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;This post note a way to use opencv in Visual studio 2015. Opencv is an power tool to deal with image, video.&lt;/p&gt;&#xA;&lt;h3 id=&#34;1-download-opencv-331&#34;&gt;1. Download opencv 3.3.1&lt;/h3&gt;&#xA;&lt;p&gt;OpenCV is an useful, well-known library to programmer/student, who are interested in image processing. It is open, free and very easy to use on both Windows or Linux environment.&lt;/p&gt;&#xA;&lt;p&gt;You guys can download the source code and build library to fit with your working environment or simply download an available pre-built package. In this post, I download a version of opencv from &lt;a href=&#34;https://sourceforge.net/projects/opencvlibrary/files/opencv-win/&#34;&gt;sourceforge&lt;/a&gt;, then use it directly as a library in my VSC++ program.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
